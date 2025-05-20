@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"Hitendra34\",\r\n    \"email\":\"hitendra369432@gmail.com\",\r\n    \"fullName\":\"Hitendra singh\",\r\n    \"password\":\"kdsafjdflk@@E$$\"\r\n}",
+							"raw": "{\r\n    \"username\":\"Hitendra34\",\r\n    \"email\":\"hitendra369432@gmail.com\",\r\n    \"fullName\":\"Hitendra singh\",\r\n    \"password\":\"Hitendrasingh@@#\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -93,7 +93,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\":\"let us C++\",\r\n    \"author\":\"yashwant kanetkar\",\r\n    \"price\":\"500\"\r\n}",
+							"raw": "{\r\n    \"title\":\"abc chem\",\r\n    \"author\":\"dirac\",\r\n    \"price\":\"5000\",\r\n    \"genre\":\"alchemy\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -148,7 +148,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{books}}/books/book/search?query=c++",
+							"raw": "{{books}}/books/book/search?query=kanetkar",
 							"host": [
 								"{{books}}"
 							],
@@ -160,7 +160,7 @@
 							"query": [
 								{
 									"key": "query",
-									"value": "c++"
+									"value": "kanetkar"
 								}
 							]
 						}
@@ -171,7 +171,26 @@
 					"name": "getAllBooks",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{books}}/books?genre=alchemy&author=dirac",
+							"host": [
+								"{{books}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "genre",
+									"value": "alchemy"
+								},
+								{
+									"key": "author",
+									"value": "dirac"
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -210,11 +229,11 @@
 				{
 					"name": "updateReview",
 					"request": {
-						"method": "POST",
+						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"comment\":\"It is a good book for c++\"\r\n}",
+							"raw": "{\r\n    \"comment\":\"It is a good book for c.\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -222,14 +241,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{books}}/reviews/update/682bfeb9e5566bfcd1cde498",
+							"raw": "{{books}}/reviews/682c2dd47f51e4ec88169a7d",
 							"host": [
 								"{{books}}"
 							],
 							"path": [
 								"reviews",
-								"update",
-								"682bfeb9e5566bfcd1cde498"
+								"682c2dd47f51e4ec88169a7d"
 							]
 						}
 					},
@@ -238,8 +256,18 @@
 				{
 					"name": "deleteReview",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{books}}/reviews/682c0c8a5b5d6791ef48288e",
+							"host": [
+								"{{books}}"
+							],
+							"path": [
+								"reviews",
+								"682c0c8a5b5d6791ef48288e"
+							]
+						}
 					},
 					"response": []
 				}
