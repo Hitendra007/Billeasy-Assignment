@@ -27,8 +27,7 @@ A RESTful API built with Node.js, Express, and MongoDB (Mongoose) for creating, 
 1. **Clone the repo**
 
    ```bash
-   git clone <your-repo-url>
-   cd <repo-folder>
+   git clone https://github.com/Hitendra007/Billeasy-Assignment.git
    ```
 
 2. **Install dependencies**
