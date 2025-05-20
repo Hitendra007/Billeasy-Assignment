@@ -19,6 +19,6 @@ app.use('/api/v1/users',userRouter)
 app.use('/api/v1/books',bookRotuer)
 app.use('/api/v1/reviews',reviewRouter)
 
-//https://localhost:8000/api/v1/users/register
+//https://localhost:8080/api/v1/users/register
 
 export {app}
