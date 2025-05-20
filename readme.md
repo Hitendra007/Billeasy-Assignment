@@ -60,8 +60,7 @@ A RESTful API built with Node.js, Express, and MongoDB (Mongoose) for creating, 
 ---
 
 ## 🔗 Database Schema
-![image](https://github.com/user-attachments/assets/1b5bc071-3d0f-4e28-8128-28484c9e3971)
-
+![image](https://github.com/user-attachments/assets/5e8e2e12-155d-4b2d-9e90-d5b467e25fc8)
 ### User
 
 | Field          | Type   | Description                |
