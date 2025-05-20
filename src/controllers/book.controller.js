@@ -6,8 +6,8 @@ import { Review } from "../models/review.model.js";
 
 
 const addBook = asyncHandler(async (req, res) => {
-    const { title, author, price } = req.body
-    if (!title || !author || !price) {
+    const { title, author, price ,genre} = req.body
+    if (!title || !author || !price || !genre) {
         throw new ApiError(409, 'title , author ,price required!! ')
     }
     const user = req.user._id
@@ -15,6 +15,7 @@ const addBook = asyncHandler(async (req, res) => {
         title,
         author,
         price,
+        genre,
         user
     })
 
@@ -114,4 +115,37 @@ const searchBooks = asyncHandler(async (req, res) => {
   );
 });
 
-export { addBook, getBook,searchBooks  }
+
+const getAllBooks = asyncHandler(async (req, res) => {
+  const { page = 1, limit = 10, author, genre } = req.query;
+
+  const query = {};
+  if (author) query.author = new RegExp(author, "i");
+  if (genre) query.genre = new RegExp(genre, "i");
+
+  const aggregate = Book.aggregate([{ $match: query }]);
+
+  const results = await Book.aggregatePaginate(aggregate, {
+    page: Number(page),
+    limit: Number(limit),
+  });
+
+  if (!results.docs || results.docs.length === 0) {
+    throw new ApiError(404, "No books found");
+  }
+
+  return res.status(200).json(
+    new ApiResponse(200, {
+      books: results.docs,
+      pagination: {
+        totalDocs: results.totalDocs,
+        totalPages: results.totalPages,
+        page: results.page,
+        limit: results.limit
+      }
+    }, "Books fetched successfully")
+  );
+});
+
+
+export { addBook, getBook,searchBooks ,getAllBooks }

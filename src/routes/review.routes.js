@@ -4,6 +4,6 @@ import { addReview,updateReview,deleteReview } from "../controllers/review.contr
 const router = Router()
 
 router.route('/:book_id').post(verifyJWT,addReview)
-router.route('/:book_id').patch(verifyJWT,updateReview)
+router.route('/:review_id').patch(verifyJWT,updateReview)
 router.route('/:id').delete(verifyJWT,deleteReview)
 export default router

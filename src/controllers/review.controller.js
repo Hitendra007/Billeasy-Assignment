@@ -35,7 +35,7 @@ const addReview = asyncHandler(async (req, res) => {
 
 
 const updateReview = asyncHandler(async (req, res) => {
-    const { book_id } = req.params;
+    const { review_id } = req.params;
     const { comment, rating } = req.body;
     const user_id = req.user._id;
 
@@ -43,14 +43,13 @@ const updateReview = asyncHandler(async (req, res) => {
         throw new ApiError(400, 'At least one of comment or rating must be provided');
     }
 
-    const book = await Book.findById(book_id);
-    if (!book) {
-        throw new ApiError(404, 'Book not found');
-    }
-
-    const existingReview = await Review.findOne({ user: user_id, book: book_id });
+    const existingReview = await Review.findById(review_id);
     if (!existingReview) {
         throw new ApiError(404, 'Review not found');
+    }
+
+    if (existingReview.user.toString() !== user_id.toString()) {
+        throw new ApiError(403, 'You are not allowed to update this review');
     }
 
     // Update fields

@@ -1,0 +1,249 @@
+{
+	"info": {
+		"_postman_id": "ff4a6028-7462-46ce-89cc-ae3aa6f58f00",
+		"name": "BooksApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32258633"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Hitendra34\",\r\n    \"email\":\"hitendra369432@gmail.com\",\r\n    \"fullName\":\"Hitendra singh\",\r\n    \"password\":\"kdsafjdflk@@E$$\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{books}}/users/register",
+							"host": [
+								"{{books}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Hitendra34\",\r\n    \"email\":\"hitendra369432@gmail.com\",\r\n    \"password\":\"Hitendrasingh@@#\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{books}}/users/login",
+							"host": [
+								"{{books}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{books}}/users/logout",
+							"host": [
+								"{{books}}"
+							],
+							"path": [
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "addBook",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"let us C++\",\r\n    \"author\":\"yashwant kanetkar\",\r\n    \"price\":\"500\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{books}}/books/book",
+							"host": [
+								"{{books}}"
+							],
+							"path": [
+								"books",
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBook",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{books}}/books/book/682bfeb9e5566bfcd1cde498?page=1&limit=10",
+							"host": [
+								"{{books}}"
+							],
+							"path": [
+								"books",
+								"book",
+								"682bfeb9e5566bfcd1cde498"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchBooks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{books}}/books/book/search?query=c++",
+							"host": [
+								"{{books}}"
+							],
+							"path": [
+								"books",
+								"book",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "c++"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllBooks",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "addReview",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\":\"4\",\r\n    \"comment\":\"Awesome book for c++\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{books}}/reviews/682bfeb9e5566bfcd1cde498",
+							"host": [
+								"{{books}}"
+							],
+							"path": [
+								"reviews",
+								"682bfeb9e5566bfcd1cde498"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateReview",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\":\"It is a good book for c++\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{books}}/reviews/update/682bfeb9e5566bfcd1cde498",
+							"host": [
+								"{{books}}"
+							],
+							"path": [
+								"reviews",
+								"update",
+								"682bfeb9e5566bfcd1cde498"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteReview",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
