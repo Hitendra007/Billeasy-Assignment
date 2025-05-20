@@ -44,9 +44,9 @@ A RESTful API built with Node.js, Express, and MongoDB (Mongoose) for creating, 
     PORT=8080
     CORS_ORIGIN=*
     MONGODB_URI=mongodb+srv://username:passsword@cluster0.jzuevgo.mongodb.net/
-    ACCESS_TOKEN_SECRET=token-access
+    ACCESS_TOKEN_SECRET=
     ACCESS_TOKEN_EXPIRY=1d
-    REFRESH_TOKEN_SECRET=token-refresh
+    REFRESH_TOKEN_SECRET=
     REFRESH_TOKEN_EXPIRY=10d
    ```
 
