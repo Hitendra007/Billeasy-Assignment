@@ -1,16 +1,31 @@
 {
-  "name": "books-api",
+  "name": "books-review-api",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
   },
-  "author": "Hitendra Singh",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hitendra007/Billeasy-Assignment.git"
+  },
+  "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hitendra007/Billeasy-Assignment/issues"
+  },
+  "homepage": "https://github.com/Hitendra007/Billeasy-Assignment#readme",
   "description": "",
   "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "prettier": "^3.5.3"
+    "mongoose": "^8.15.0",
+    "nodemon": "^3.1.10",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   }
 }
