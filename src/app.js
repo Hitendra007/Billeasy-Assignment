@@ -1,8 +1,6 @@
 import express from "express"
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
-import {serve,setup} from 'swagger-ui-express'
-import swaggerSpec from "./config/swagger.js"
 const app = express()
 
 app.use(cors({
@@ -13,9 +11,14 @@ app.use(express.json({ limit: "16kb" }))
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"))
 app.use(cookieParser())
-app.use('/api/v1/api-docs',serve,setup(swaggerSpec))
 
+import userRouter from './routes/user.routes.js'
+import bookRotuer from './routes/book.routes.js'
+import reviewRouter from './routes/review.routes.js'
+app.use('/api/v1/users',userRouter)
+app.use('/api/v1/books',bookRotuer)
+app.use('/api/v1/reviews',reviewRouter)
 
-
+//https://localhost:8000/api/v1/users/register
 
 export {app}

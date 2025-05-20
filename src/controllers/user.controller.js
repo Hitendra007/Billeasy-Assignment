@@ -5,12 +5,12 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import mongoose from "mongoose";
 import jwt from 'jsonwebtoken'
 
+
 const generateAccessAndRefereshTokens = async (userId) => {
     try {
         const user = await User.findById(userId)
         const accessToken = user.generateAccessToken()
         const refreshToken = user.generateRefreshToken()
-
         user.refreshToken = refreshToken
         await user.save({ validateBeforeSave: false })
 
@@ -18,21 +18,23 @@ const generateAccessAndRefereshTokens = async (userId) => {
 
 
     } catch (error) {
+        console.log(error)
         throw new ApiError(500, "Something went wrong while generating referesh and access token")
     }
 }
 
-const registerUser = asyncHandler(async (req,res)=>{
-    const {fullName,email,username,password}=req.body
-    if(!fullName || !email || !username || !password){
-        throw new ApiError(400,"All fields are required")
+const registerUser = asyncHandler(async (req, res) => {
+    const { fullName, email, username, password } = req.body
+    console.log(fullName, email, username, password)
+    if (!fullName || !email || !username || !password) {
+        throw new ApiError(400, "All fields are required")
     }
     const existedUser = await User.findOne({
-        $or:[{username},{email}]
+        $or: [{ username }, { email }]
     })
 
-    if(existedUser){
-        throw new ApiError(409,"User with email or username already exists")
+    if (existedUser) {
+        throw new ApiError(409, "User with email or username already exists")
     }
 
     const user = await User.create({
@@ -40,19 +42,19 @@ const registerUser = asyncHandler(async (req,res)=>{
         username,
         email,
         password,
-        username:username.toLowerCase()
+        username: username.toLowerCase()
     })
 
     const createdUser = await User.findById(user._id).select(
         "-password -refreshToken"
     )
 
-    if(!createdUser){
-        throw new ApiError(500,"Problem in creation of User , Internal server Error")
+    if (!createdUser) {
+        throw new ApiError(500, "Problem in creation of User , Internal server Error")
     }
 
     return res.status(200).json(new ApiResponse(
-        200,createdUser,'User created Successfully'
+        200, createdUser, 'User created Successfully'
     ))
 
 })
@@ -70,7 +72,7 @@ const loginUser = asyncHandler(async (req, res) => {
     if (!user) {
         throw new ApiError(404, "User does not exist")
     }
-    const isPasswordValid = await user.isPasswrordCorrect(password)
+    const isPasswordValid = await user.isPasswordCorrect(password)
 
     if (!isPasswordValid) {
         throw new ApiError(401, 'Password incorrect!')
