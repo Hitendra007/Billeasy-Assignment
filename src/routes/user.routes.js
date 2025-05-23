@@ -9,7 +9,7 @@ import { verifyJWT } from "../middlewares/auth.middleware.js";
 const router = Router();
 
 router.route('/register').post(registerUser);
-router.post('/login', loginUser);
+router.route('/login',loginUser);
 router.post('/logout', verifyJWT,logoutUser);
 router.post('/refresh-token', refreshAccessToken);
 
